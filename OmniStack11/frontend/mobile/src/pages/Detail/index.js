@@ -1,7 +1,7 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, FlatList, Image, Text, TouchableOpacity, Linking } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Linking } from 'react-native';
 import * as MailComposer from 'expo-mail-composer';
 
 import logoImg from '../../assets/logo.png';
@@ -11,12 +11,13 @@ import styles from './styles';
 
 
 export default function Detail() {
-
-    const navigation = useNavigation();
+    
     const route = useRoute();
+    const incident = route.params.incident;
+    
+    const navigation = useNavigation();
     const message = `Hello,${incident.name}, I am in touch because I would like to help in the case of ${incident.title} with the value of R$${incident.value},00`;
 
-    const incident = route.params.incident;
 
     function navigateToIncidents() {
         navigation.navigate('Incidents');
